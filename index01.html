@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的個人首頁</title>
+    <style>
+        /* 基礎設定 - 清爽天空藍漸層背景 */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Microsoft JhengHei";
+            background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #334155;
+        }
+
+        /* 主容器 - 雲朵般純白霧面質感 */
+        .container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(14, 165, 233, 0.12);
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.75rem;
+            color: #0369a1;
+        }
+
+        p {
+            margin: 0 0 2rem 0;
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        /* 連結列表群組 */
+        .links-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        /* 超連結按鈕 - 自然舒適的微透色（無文字與網址預設值） */
+        .link-card {
+            display: block;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.5); /* 半透明白，隱約透出背景藍 */
+            color: #475569; /* 質感岩灰藍文字 */
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.6); /* 隱約的白邊 */
+        }
+
+        /* 滑鼠懸停效果 - 自然亮起 */
+        .link-card:hover {
+            background-color: rgba(255, 255, 255, 0.95); /* 變回純淨白 */
+            color: #0284c7; /* 水藍色文字 */
+            transform: translateY(-2px); /* 微微浮起 */
+            box-shadow: 0 6px 15px rgba(14, 165, 233, 0.1);
+        }
+
+        /* 頁尾 */
+        .footer {
+            margin-top: 2.5rem;
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <h1>歡迎來到我的首頁</h1>
+       
+
+        <!-- 超連結區：完全清空，等你塞入自己的內容 -->
+        <div class="links-group">
+            <a href="./school/admin.php" target="_blank" class="link-card">admin
+            <a href="./school/api_login.php" target="_blank" class="link-card">api_login.
+            <a href="./school/index.html" target="_blank" class="link-card">index
+            <a href="./school/register.php" target="_blank" class="link-card">register
+            <a href="./school/login.php"target="_blank" class="link-card">login</a>
+            <a href="./school/include/class_students.php" target="_blank" class="link-card">class_students</a>
+            <a href="./school/include/classrooms.php" target="_blank" class="link-card">classrooms</a>
+            <a href="./school/include/db_conn.php" target="_blank" class="link-card">db_conn</a>
+            <a href="./school/include/students.php" target="_blank" class="link-card">students</a>
+            <a href="./school/include/subjects.php" target="_blank" class="link-card">subjects</a>
+            <a href="./school/include/add_student.php" target="_blank" class="link-card">add_student.php</a>
+            <a href="./school/include/api_add_student.php" target="_blank" class="link-card">api_add_student</a>
+
+        </div>
+
+        <div class="footer">
+            © 2026 Powered by HTML/CSS
+        </div>
+    </div>
+
+</body>
+</html>

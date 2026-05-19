@@ -1,0 +1,191 @@
+/* ==========================================================================
+   公立杜王町大学 - 頁首專用樣式表
+   ========================================================================== */
+
+/* 時停反轉特效 (套用在 html 標籤) */
+.za-warudo-active {
+    filter: invert(1) hue-rotate(180deg) contrast(1.5);
+    animation: header-shake 0.1s infinite;
+}
+
+@keyframes header-shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(0px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(2px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(2px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+/* 🚀 雙層固定頁首基礎設定 */
+.jp-university-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #000000;
+    border-bottom: 5px solid #ff007f;
+    z-index: 100;
+    box-shadow: 0 8px 0px #ffd700;
+    font-family: "MS Mincho", "SimSun", "Microsoft JhengHei", sans-serif;
+}
+
+/* 頁首上層：導覽小字 */
+.header-top-bar {
+    background: #111;
+    border-bottom: 1px solid #333;
+    padding: 6px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+}
+
+.jp-lang-selector span {
+    color: #ffd700;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.header-sub-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.header-sub-nav a {
+    color: #aaa;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.header-sub-nav a:hover {
+    color: #00ffcc;
+    text-decoration: underline;
+}
+
+/* 頁首下層：主標題與按鈕 */
+.header-main-bar {
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.university-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+}
+
+.univ-logo-emblem {
+    width: 45px;
+    height: 45px;
+    border: 3px solid #ffd700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff007f;
+    font-size: 1.3rem;
+    font-weight: bold;
+    background: #000;
+    text-shadow: 1px 1px 0px #fff;
+    box-shadow: 2px 2px 0px #00ffcc;
+}
+
+.univ-title-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.univ-name-kanji {
+    font-family: "Impact", "Microsoft JhengHei", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 4px;
+    margin: 0;
+    line-height: 1.2;
+    text-shadow: 2px 2px 0px #9400d3;
+}
+
+.univ-name-english {
+    font-size: 0.55rem;
+    color: #ffd700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 2px;
+    font-weight: bold;
+}
+
+.university-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* JOJO 特效按鈕 */
+.jojo-tool-btn {
+    background: #222;
+    color: #ffd700;
+    border: 2px dashed #ffd700;
+    padding: 6px 12px;
+    font-size: 0.65rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.jojo-tool-btn:hover {
+    transform: scale(1.1) rotate(-2deg);
+    border-style: solid;
+    background: #ffd700;
+    color: #000;
+}
+
+/* 入口按鈕（Hover 放大） */
+.jp-portal-btn {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    padding: 10px 24px;
+    border: 3px solid #000;
+    box-shadow: 5px 5px 0px #000;
+    position: relative;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.4), box-shadow 0.2s ease;
+}
+
+.btn-jp-login {
+    background: #9400d3;
+    color: #ffffff;
+    border-color: #ffd700;
+    box-shadow: 4px 4px 0px #ffd700;
+}
+
+.btn-jp-register {
+    background: #00ffcc;
+    color: #000000;
+    border-color: #ffffff;
+    box-shadow: 4px 4px 0px #ff007f;
+}
+
+.btn-jp-login:hover {
+    transform: scale(1.2) translateY(-2px);
+    background: #ffd700;
+    color: #000000;
+    box-shadow: 8px 8px 0px #ff007f;
+}
+
+.btn-jp-register:hover {
+    transform: scale(1.2) translateY(-2px);
+    background: #ff007f;
+    color: #ffffff;
+    box-shadow: 8px 8px 0px #00ffcc;
+}

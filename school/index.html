@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公立杜王町大学 - M-U-O 官方網站</title>
+    <style>
+        /* 基礎設定 */
+        html {
+            font-size: 19.2px; /* 初始文字放大 1.2 倍 */
+            transition: filter 0.3s ease, font-size 0.2s ease;
+            scroll-padding-top: 150px;
+        }
+
+        /* 時停反轉特效 */
+        .za-warudo-active {
+            filter: invert(1) hue-rotate(180deg) contrast(1.5);
+            animation: shake 0.1s infinite;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(0px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(2px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(2px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+
+        body {
+            background: linear-gradient(135deg, #0e001a 0%, #050510 100%);
+            color: #ffffff;
+            font-family: "MS Mincho", "SimSun", "Microsoft JhengHei", sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* 🚀 經典日式大專院校 × JOJO 雙層固定頁首 */
+        .jp-university-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #000000;
+            border-bottom: 5px solid #ff007f;
+            z-index: 100;
+            box-shadow: 0 8px 0px #ffd700;
+        }
+
+        /* 頁首上層：日式大學特有的分類小字導覽 */
+        .header-top-bar {
+            background: #111;
+            border-bottom: 1px solid #333;
+            padding: 6px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.65rem;
+            letter-spacing: 1px;
+        }
+
+        .jp-lang-selector span {
+            color: #ffd700;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .header-sub-nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-sub-nav a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .header-sub-nav a:hover {
+            color: #00ffcc;
+            text-decoration: underline;
+        }
+
+        /* 頁首下層：主標題與門戶按鈕 */
+        .header-main-bar {
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* 日式大學校徽組合 (帶有JOJO箭頭與黃金精神星形意象) */
+        .university-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .univ-logo-emblem {
+            width: 45px;
+            height: 45px;
+            border: 3px solid #ffd700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff007f;
+            font-size: 1.3rem;
+            font-weight: bold;
+            background: #000;
+            text-shadow: 1px 1px 0px #fff;
+            box-shadow: 2px 2px 0px #00ffcc;
+        }
+
+        .univ-title-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 漢字校名：日式大專院校的厚重黑體 */
+        .univ-name-kanji {
+            font-family: "Impact", "Microsoft JhengHei", sans-serif;
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 4px;
+            margin: 0;
+            line-height: 1.2;
+            text-shadow: 2px 2px 0px #9400d3;
+        }
+
+        .univ-name-english {
+            font-size: 0.55rem;
+            color: #ffd700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 2px;
+            font-weight: bold;
+        }
+
+        /* 右側核心互動按鈕群 */
+        .university-nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* JOJO 特效按鈕 */
+        .jojo-tool-btn {
+            background: #222;
+            color: #ffd700;
+            border: 2px dashed #ffd700;
+            padding: 6px 12px;
+            font-size: 0.65rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .jojo-tool-btn:hover {
+            transform: scale(1.1) rotate(-2deg);
+            border-style: solid;
+            background: #ffd700;
+            color: #000;
+        }
+
+        /* 🚀 重點：日式招生入口按鈕（極致 Hover 放大） */
+        .jp-portal-btn {
+            display: inline-block;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            padding: 10px 24px;
+            border: 3px solid #000;
+            box-shadow: 5px 5px 0px #000;
+            position: relative;
+            /* 漫畫感十足的縮放曲線 */
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.4), box-shadow 0.2s ease;
+        }
+
+        /* 🔑 登入鈕：傳統日本大學「密碼鍵入」沉穩感混搭荒木紫 */
+        .btn-jp-login {
+            background: #9400d3;
+            color: #ffffff;
+            border-color: #ffd700;
+            box-shadow: 4px 4px 0px #ffd700;
+        }
+
+        /* 🧬 註冊鈕：日本大學「入學案內/願書索取」鮮明感混搭承太郎綠 */
+        .btn-jp-register {
+            background: #00ffcc;
+            color: #000000;
+            border-color: #ffffff;
+            box-shadow: 4px 4px 0px #ff007f;
+        }
+
+        /* 🚀 滑鼠移入：按鈕狂暴放大 1.2 倍！並產生黑白網點般的強烈反差 */
+        .btn-jp-login:hover {
+            transform: scale(1.2) translateY(-2px);
+            background: #ffd700;
+            color: #000000;
+            box-shadow: 8px 8px 0px #ff007f;
+        }
+
+        .btn-jp-register:hover {
+            transform: scale(1.2) translateY(-2px);
+            background: #ff007f;
+            color: #ffffff;
+            box-shadow: 8px 8px 0px #00ffcc;
+        }
+
+        /* 主容器 (為上方固定的雙層大頁首留出空間) */
+        .school-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 180px 30px 40px 30px;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        /* 背景擬聲詞 */
+        .menace-text {
+            position: fixed;
+            font-size: 8rem;
+            font-weight: 900;
+            font-style: italic;
+            text-shadow: 4px 4px 0px #000;
+            user-select: none;
+            z-index: 1;
+            opacity: 0.1;
+            animation: floatGOGO 3s infinite alternate ease-in-out;
+        }
+        .gogo-left { top: 30%; left: 20px; color: #ff007f; transform: rotate(-15deg); }
+        .gogo-right { bottom: 15%; right: 20px; color: #ffd700; transform: rotate(15deg); animation-delay: 0.5s; }
+
+        @keyframes floatGOGO {
+            0% { transform: scale(1) translateY(0px); }
+            100% { transform: scale(1.1) translateY(-20px); }
+        }
+
+        /* 日式校園公布欄大 Banner */
+        .school-gate-banner {
+            border: 8px solid #ffffff;
+            outline: 4px solid #ffd700;
+            background: #000000;
+            padding: 50px 20px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 15px 15px 0px #9400d3; 
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .kanji-title {
+            font-size: 3.8rem;
+            font-weight: 900;
+            color: #ffd700;
+            letter-spacing: 12px;
+            margin: 0;
+            text-shadow: 4px 4px 0px #ff007f, 8px 8px 0px #000;
+        }
+
+        .english-title {
+            font-size: 1.1rem;
+            color: #00ffcc;
+            letter-spacing: 8px;
+            margin-top: 15px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        /* 內容區塊 */
+        .section-box {
+            background: rgba(10, 10, 25, 0.9);
+            border: 4px solid #ffd700;
+            padding: 35px;
+            margin-bottom: 40px;
+            z-index: 2;
+            position: relative;
+            box-shadow: 12px 12px 0px #000;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+        }
+
+        .section-box:hover {
+            transform: scale(1.02);
+            box-shadow: 20px 20px 0px #ff007f;
+            border-color: #00ffcc;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #ff007f;
+            margin-top: 0;
+            border-bottom: 4px solid #ffffff;
+            padding-bottom: 12px;
+            letter-spacing: 3px;
+        }
+
+        .principal-box {
+            border-left: 20px solid #ffd700;
+        }
+
+        .principal-quote {
+            font-size: 1.4rem;
+            color: #ffd700;
+            font-style: italic;
+            font-weight: bold;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+
+        .features-grid {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .feature-card {
+            flex: 1;
+            min-width: 45%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px dashed #333;
+            padding: 25px;
+            box-sizing: border-box;
+            transition: all 0.25s ease;
+        }
+
+        .feature-card.full-width {
+            min-width: 100%;
+            border-color: #ffd700;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px) scale(1.03);
+            background-color: rgba(148, 0, 211, 0.2);
+            border: 2px solid #00ffcc;
+        }
+
+        .feature-card h4 {
+            color: #ffd700;
+            font-size: 1.15rem;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: #d0d0d0;
+            margin: 0;
+        }
+
+        footer {
+            background-color: #000;
+            text-align: center;
+            padding: 30px;
+            font-size: 0.8rem;
+            color: #555;
+            border-top: 4px solid #ff007f;
+            letter-spacing: 1px;
+            z-index: 10;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🚀 經典日式大專院校風格 JOJO 頁首 -->
+    <header class="jp-university-header">
+        
+        <!-- 上層：日式大學內部導覽（在校生、留學生、學部案內） -->
+        <div class="header-top-bar">
+            <div class="jp-lang-selector">
+                <span>JAPANESE</span> <span>ENGLISH</span> <span style="color:#ff007f;">DIO語 (WRYYY)</span>
+            </div>
+            <div class="header-sub-nav">
+                <a href="#">受験生の方</a>
+                <a href="#">在學生の方</a>
+                <a href="#">卒業生の方</a>
+                <a href="#">研究・產學官連携</a>
+            </div>
+        </div>
+
+        <!-- 下層：校徽、厚重漢字校名、狂暴放大登入註冊鈕 -->
+        <div class="header-main-bar">
+            <a href="#" class="university-brand">
+                <!-- 星形標誌校徽 -->
+                <div class="univ-logo-emblem">★</div>
+                <div class="univ-title-group">
+                    <h1 class="univ-name-kanji">公立杜王町大学</h1>
+                    <span class="univ-name-english">Moriah University of Outstanding</span>
+                </div>
+            </a>
+            
+            <div class="university-nav-actions">
+                <!-- JOJO 系統按鈕 -->
+                <button class="jojo-tool-btn" onclick="changeFontSize(1)">歐拉！字體變大</button>
+                <button class="jojo-tool-btn" onclick="zaWarudo()">⏱️ 時間停止</button>
+                
+                <!-- 核心日式大專院校入口（滑鼠移過去暴脹 1.2 倍！） -->
+                <a href="login.php" class="jp-portal-btn btn-jp-login">學力試驗・密碼登入</a>
+                <a href="register.php" class="jp-portal-btn btn-jp-register">令和新入生・替身覺醒願書</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 背景擬聲詞 -->
+    <div class="menace-text gogo-left">ゴゴゴゴ</div>
+    <div class="menace-text gogo-right">ゴゴゴゴ</div>
+
+    <div class="school-wrapper">
+
+        <!-- 布告欄 Banner -->
+        <div class="school-gate-banner">
+            <h1 class="kanji-title">杜王町大学 本部</h1>
+            <div class="english-title">MORIAH UNIVERSITY ★ THE WORLD CAMPUS</div>
+        </div>
+
+        <!-- 校長室區塊 -->
+        <div class="section-box principal-box">
+            <h2 class="section-title">【 最高權力者代表・總長致詞 】</h2>
+            <div class="principal-quote">
+                「無駄無駄無駄無駄無駄ーーー！！ 還在為了平庸的未來猶豫嗎？」
+            </div>
+            <p style="font-size: 0.95rem; line-height: 1.8; color: #f0f0f0;">
+                我是本校的總長——<b>搶了別人身體的 DIO</b>。本學園立足於杜王町，是一所超越人類極限、支配絕對命運的頂級殿堂。在這裡，我們不談弱者的溫情，我們只看重「精神的絕對強大」與「立於頂點的器量」。當你踏入這座校門，就代表你已經做好超越凡人、覺醒替身的覺悟。臣服於這股力量，或者被壓路機輾過去，答案由你決定！
+            </p>
+        </div>
+
+        <!-- 五大特色卡片區 -->
+        <div class="section-box">
+            <h2 class="section-title">【 絕對霸權・學部五大不可思議特色 】</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h4>① 跨越時空的「國際視野」 (The World Vision)</h4>
+                    <p>本校的國際化極度硬核！校長 DIO 每天親自利用替身能力「時間停止」，在深夜把同學載到埃及開羅的夜市實習，體驗跨國文化與棺材宿營。在「The World」的引導下，全球菁英都將在你的掌握之中。</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>② 基因突變級的「全人全能發展」 (Total Evolution)</h4>
+                    <p>拒絕成為平庸的工具！體育課由校長親自示範「搬運壓路機」；美術課由岸邊露伴老師親自把你做成真人素材。從完美無瑕的妖豔體魄，到靈魂深處的替身能力覺醒，我們的全人教育致力於把你改造成完美的支配者。</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>③ 托尼老師特製「吃了會噴淚」學園午餐 (Stand Nutrition)</h4>
+                    <p>本校中央廚房由義大利名廚總管。本校只提供「珍珠果醬替身料理」。吃下去的瞬間，你的舊蛀牙會直接彈射出來、眼淚像噴泉一樣暴噴，一頓飯吃完直接治好你累積十年的過敏與駝背。</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>④ 極度講究時尚的「校規與校服制度」 (JoJo Posing)</h4>
+                    <p>本校制服由國際大師設計，服裝上隨機附帶大量黃金愛心。升旗典禮時，禁止雙腳著地立正，師生必須維持「骨折式 JoJo 立」長達 30 分鐘，站不穩者，將會被風紀股長空条承太郎用「白金之星」物理糾正。</p>
+                </div>
+
+                <div class="feature-card full-width">
+                    <h4>⑤ 熱血到靈魂出竅的「社團活動」 (Ultimate Clubs)</h4>
+                    <p><b>【暗殺小組研究社】</b>每天研究如何把隊長切成標本；<b>【飆馬野郎馬術社】</b>致力於在操場上尋找耶穌的聖體碎片並跑完橫跨美洲大陸的距離；<b>【搖滾樂鑑賞社】</b>則是在地下室瘋狂召喚皇后殺手進行定點爆破。在這裡，你的高中生活絕對不會留白。</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        © 2026 公立杜王町大学・最高支配者 DIO 帝國. WRYYYYYYYYY!! TO BE CONTINUED... ➔
+    </footer>
+
+    <script>
+        let currentSizeLevel = 0;
+        const baseSize = 19.2;
+
+        function changeFontSize(direction) {
+            if (direction === 1) {
+                currentSizeLevel = (currentSizeLevel + 1) % 4;
+            }
+            let newSize = baseSize + (currentSizeLevel * 4);
+            document.documentElement.style.fontSize = newSize + "px";
+        }
+
+        function zaWarudo() {
+            const htmlEl = document.documentElement;
+            htmlEl.classList.add('za-warudo-active');
+            setTimeout(() => {
+                htmlEl.classList.remove('za-warudo-active');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
