@@ -1,5 +1,5 @@
 <?php
-include_once "db_conn.php";
+include_once "./school/include/db_conn.php";
 
 // echo"<pre>";
 // print_r($_POST['name']);
