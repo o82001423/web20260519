@@ -1,5 +1,5 @@
 <?php 
-include "./school/include/db_conn.php"; 
+include "db_conn.php"; 
 // 💡 預防性檢查：確保 $pdo 變數存在，若不存在則建立（請依你實際的 db_conn.php 設定調整）
 if (!isset($pdo) && isset($conn)) { $pdo = $conn; } 
 ?>
@@ -443,7 +443,7 @@ if (!isset($pdo) && isset($conn)) { $pdo = $conn; }
         <div class="section-box">
             <h2 class="section-title">【 學生基本屬性與精神力規格鍵入 】</h2>
             
-            <form method="POST" action="./api_add_student.php">
+            <form method="POST" action="include/api_add_student.php">
                 
                 <!-- 1. 學號 -->
                 <div class="form-group">

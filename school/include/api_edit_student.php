@@ -1,5 +1,5 @@
 <?php
-include_once "./school/include/db_conn.php";
+include_once "db_conn.php";
 
 // echo"<pre>";
 // print_r($_POST['name']);
@@ -20,7 +20,7 @@ $sql_student="UPDATE `students`
                                     set `class_code`='{$_POST['class_code']}'
                                     where `school_num`='{$_POST['school_num']}'";
                            
- $pdo->exec($sql_student);
+$pdo->exec($sql_student);
 $pdo->exec($sql_class);
 header("location:../admin.php?ins=class_students&code={$_POST['class_code']}");
 exit;

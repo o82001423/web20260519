@@ -1,6 +1,6 @@
 <?php 
 // 1. 修正路徑：使用 __DIR__ 確保引到同資料夾底下的 db_conn.php
-include_once __DIR__ . "/db_conn.php";
+include_once "db_conn.php";
 
 // 2. 防禦機制：如果網址沒有帶 ?num= 學號，就退回
 if (!isset($_GET['num'])) {
@@ -41,7 +41,7 @@ if (!$student) {
         <h2 class="section-title">【 學生基本屬性與精神力規格變更 】</h2>
         
         <!-- 💡 注意：Action 修改為處理編輯的 API 檔案，並把學號帶過去 -->
-        <form method="POST" action="./api_edit_student.php">
+        <form method="POST" action="include/api_edit_student.php">
             
             <!-- 1. 學號 (編輯時學號通常是主鍵，設定唯讀 readonly) -->
             <div class="form-group">
@@ -159,8 +159,6 @@ if (!$student) {
 
 </div>
 
-<footer>
-    © 2026 公立杜王町大学・最高支配者 DIO 帝國. WRYYYYYYYYY!! TO BE CONTINUED... ➔
-</footer>
+
 </body>
 </html>

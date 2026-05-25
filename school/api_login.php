@@ -18,16 +18,20 @@ try {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         // 3. 檢查帳號與密碼是否吻合
-        // 💡 註：因為你先前註冊直接存了明文，這裡先用明文比對 ($user['password'] == $password)
-        // 💡 未來如果你註冊改用 password_hash()，這裡就要換成 password_verify($password, $user['password'])
         if ($user && $user['password'] == $password) {
             
-            // 登入成功：將狀態存入 Session
-            $_SESSION['user'] = $user['account'];
+            // 🎯 登入成功：將狀態存入 Session
+            // 💡 修正：把 Key 改為 'login'，完美對接 admin.php 的安全鎖
+            $_SESSION['login'] = $user['account'];
+            
+            // 如果你的 members 資料表有 name 欄位，就存進去；沒有的話就用預設的
+            $_SESSION['user_name'] = $user['name'] ?? $user['account'];
 
+            // 💡 修正：成功後直接跳轉進去 admin.php
+            // ⚠️ 註：如果你的 api 檔案在 include/ 資料夾內，路徑要寫 '../admin.php' 喔！
             echo "<script>
                     alert('登入成功！歡迎回來，" . $user['account'] . "！');
-                    window.location.href = 'login.php'; // 這裡可以改成登入成功後的後台首頁
+                    window.location.href = 'admin.php'; 
                   </script>";
             exit;
         } else {
